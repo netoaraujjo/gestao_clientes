@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Person
+from .forms import ClienteForm
 
 # Create your views here.
 
@@ -18,3 +19,31 @@ def client(request, id):
         'person': person
     }
     return render(request, 'clientes/detalhes.html', context)
+
+
+def new_client(request):
+    form = ClienteForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('clientes:clients')
+
+    return render(request, 'clientes/novo.html', {'form': form})
+
+
+def update_client(request, id):
+    client = get_object_or_404(Person, pk=id)
+    form = ClienteForm(request.POST or None, request.FILES or None, instance=client)
+
+    if form.is_valid():
+        form.save()
+        return redirect('clientes:clients')
+    
+    return render(request, 'clientes/editar.html', {'form': form})
+
+
+def delete_client(request, id):
+    client = get_object_or_404(Person, pk=id)
+    if client:
+        client.delete()
+    return redirect('clientes:clients')

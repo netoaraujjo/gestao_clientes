@@ -11,8 +11,15 @@
     <h1>Clientes</h1>
     <ul>
     {% for person in persons %}
-        <li><a href="{% url 'clientes:client_detail' person.id %}">{{ person.first_name }}</a></li>
+        <li>
+            <a href="{% url 'clientes:client_detail' person.id %}">{{ person.first_name }}</a>
+            <a href="{% url 'clientes:update_client' person.id %}">Editar</a>
+            <a href="{% url 'clientes:delete_client' person.id %}">Excluir</a>
+        </li>
     {% endfor %}
+    
+    <br />
+    <a href="{% url 'clientes:new_client' %}">Novo cliente</a>
     </ul>
     
 </body>
