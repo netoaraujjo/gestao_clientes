@@ -7,6 +7,9 @@
     <title>Novo cliente</title>
 </head>
 <body>
+
+    <a href="{% url 'logout' %}">Sair</a>
+    
     <h1>Novo Cliente</h1>
     <form method="post" action="{% url 'clientes:new_client' %}" enctype="multipart/form-data">
         {% csrf_token %}

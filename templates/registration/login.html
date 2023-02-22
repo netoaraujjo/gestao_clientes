@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar cliente</title>
+    <title>Login</title>
 </head>
 <body>
-
-    <a href="{% url 'logout' %}">Sair</a>
-    
-    <h1>Editar Cliente</h1>
-    <form method="post" enctype="multipart/form-data">
+    <h1>Login</h1>
+    <form method="post">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">Salvar</button>
+        {{form.as_p}}
+        <button type="submit">Login</button>
     </form>
-    
 </body>
 </html>
