@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <a href="{% url 'logout' %}">Sair</a>
+{% block title %}Clientes{% endblock %}
+
+{% block main %}
+
+    <a href="{% url 'home:sair' %}">Sair</a>
 
     <h1>Clientes</h1>
     <ul>
@@ -16,13 +12,12 @@
         <li>
             <a href="{% url 'clientes:client_detail' person.id %}">{{ person.first_name }}</a>
             <a href="{% url 'clientes:update_client' person.id %}">Editar</a>
-            <a href="{% url 'clientes:delete_client' person.id %}">Excluir</a>
+            <a href="{% url 'clientes:delete_client' person.id %}" class="btn btn-danger">Excluir</a>
         </li>
     {% endfor %}
     
     <br />
-    <a href="{% url 'clientes:new_client' %}">Novo cliente</a>
+    <a href="{% url 'clientes:new_client' %}" class="btn btn-primary">Novo cliente</a>
     </ul>
     
-</body>
-</html>
+{% endblock %}

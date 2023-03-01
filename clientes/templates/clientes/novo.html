@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo cliente</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Novo cliente{% endblock %}
+
+{% block main %}
 
     <a href="{% url 'logout' %}">Sair</a>
     
@@ -14,8 +10,7 @@
     <form method="post" action="{% url 'clientes:new_client' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
-        <button type="submit">Salvar</button>
+        <button type="submit" class="btn btn-info">Salvar</button>
     </form>
     
-</body>
-</html>
+{% endblock %}
