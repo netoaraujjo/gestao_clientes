@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clientes',
     'home',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'gestao_clientes',
         'USER': 'postgres',
-        'PASSWORD': '12345678',
+        'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '5432'
     }
