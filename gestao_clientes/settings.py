@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import environ
 from pathlib import Path
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@s^aym7m4t&8!pallwr-2s$odj4%twwkfuohr%=x6)8%8t^e^v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DJANGO_DEBUG', True)
 
 ALLOWED_HOSTS = []
 
@@ -80,11 +82,11 @@ WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gestao_clientes',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'NAME': env('DB_NAME', default='gestao_clientes'),
+        'USER': env('DB_USER', default='postgres'),
+        'PASSWORD': env('DB_PASSWORD', default='123456'),
+        'HOST': env('DB_HOST', default='127.0.0.1'),
+        'PORT': env('DB_PORT', default='5432')
     }
 }
 
